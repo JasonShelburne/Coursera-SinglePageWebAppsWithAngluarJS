@@ -1,0 +1,26 @@
+<!--// menu_items": [
+// {
+// "id": 888,
+// "short_name": "B1",
+// "name": "Beef Egg Roll",
+// "description": "eggroll with cabbage, carrots and beef",
+// "price_small": null,
+// "price_large": 3,
+// "small_portion_name": null,
+// "large_portion_name": null-->
+
+
+<table>
+  <tr ng-repeat="item in $ctrl.items">
+    <td>{{ item.id }}</td>
+    <td>{{ item.short_name }</td>
+    <td>{{ item.name }</td>
+    <td>{{ item.description }</td>
+    <td>{{ item.price_tag }</td>
+    <td>{{ item.price_small }</td>
+    <td>{{ item.price_large }</td>
+    <td>{{ small_portion_name }</td>
+    <td>{{ large_portion_name }</td>
+    <!--<button ng-click="$ctrl.remove($index);">Remove Item</button>-->
+  </tr>
+</table>

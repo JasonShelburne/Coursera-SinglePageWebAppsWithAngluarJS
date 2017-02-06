@@ -1,0 +1,25 @@
+<table class="datatable" width="100%">
+    <tr>
+        <td>Name</td>
+        <td>Short Name</td>
+        <td>Description</td>
+        <td></td>
+    </tr>
+    <tbody>
+        <tr ng-repeat= "item in items">
+            <td>{{item.name}}</td>
+            <td>{{item.short_name}}</td>
+            <td>{{item.description}}</td>
+            <td><button class="btn btn-primary" ng-click="onRemove({index: $index});">Don't want this one!</button></td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <div ng-if="items.length === 0"><b>Nothing found.</b></div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+  
