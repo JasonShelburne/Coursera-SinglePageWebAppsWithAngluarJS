@@ -31,43 +31,28 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
   // Categories list page
   .state('categories', {
     url: '/categories',
-    templateUrl: 'menudata/categories.template.html',
+    templateUrl: 'menudata/main-categories.template.html',
     controller: 'CategoriesController as categoriesCtrl',
-    resolve: {
-      categories: ['MenuDataService', function (MenuDataService) {
+     resolve: {
+      items: ['MenuDataService', function (MenuDataService) {
         return MenuDataService.getAllCategories();
       }]
     }
   })
 
 
+ // Items list page
+  .state('items', {
+     url: '/{categoryShortName}/items',
+     templateUrl: 'menudata/items.template.html',
+     controller: 'ItemsController as itemsCtrl',
+     resolve: {
+       items: ['$stateParams', 'MenuDataService', function ($stateParams, MenuDataService) {
+         return MenuDataService.getItemsForCategory($stateParams.categoryShortName);
+       }]
+     }
+  })
 
-//   // Categories list page
-//   .state('categories', {
-//     url: '/categories',
-//     templateUrl: 'src/menu/templates/categories.template.html',
-//     controller: 'CategoriesController as categoriesCtrl',
-//     resolve: {
-//       items: ['MenuDataService', function (MenuDataService) {
-//         return MenuDataService.getAllCategories();
-//       }]
-//     }
-//   })
-
-//   .state('itemDetail', {
-//     url: '/item-detail/{itemId}',
-//     templateUrl: 'src/shoppinglist/templates/item-detail.template.html',
-//     controller: 'ItemDetailController as itemDetail',
-//     resolve: {
-//       item: ['$stateParams', 'ShoppingListService',
-//             function ($stateParams, ShoppingListService) {
-//               return ShoppingListService.getItems()
-//                 .then(function (items) {
-//                   return items[$stateParams.itemId];
-//                 });
-//             }]
-//     }
-//   });
 }
 
 })();

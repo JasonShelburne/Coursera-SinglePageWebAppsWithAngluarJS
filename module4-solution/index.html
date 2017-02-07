@@ -1,66 +1,43 @@
 <!doctype html>
 <html ng-app='MenuApp'>
-  <head>
-    <title>Welcome to our Restaurant</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--<script src="app.js"></script>-->
 
-    <link rel="stylesheet" href="styles/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="styles/table.css">
-  </head>
-  
-  <!--1. Declare `ng-app` either on the `html` or the `body` element. Name your app `MenuApp`.-->
-  <!--2. You must follow the 1 artifact per file rule. That means if the JS file declares a controller, it should *not* declare anything else like a service or component and vice versa. Use a separate JS file to declare other artifacts in your application. *Don't forget to include each JS file in your `index.html`!*-->
+<head>
+  <title>Welcome to our Restaurant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="styles/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/table.css">
+</head>
 
 <body>
- 
 
-      <ui-view></ui-view>
+  <ui-view></ui-view>
 
-    <!--<div ng-controller="NarrowItDownController as narrowDown">
-      <h1>Narrow Down Your Chinese Menu Choice</h1>
-      <table border="0" class="datatable">
-        <tr>
-          <td>
-            <div class="form-group">
-              <input type="text" placeholder="search term" class="form-control" ng-model="narrowDown.searchTerm">
-            </div>
-          </td>
-          <td>
-            <div class="form-group narrow-button" >
-              <button class="btn btn-primary" ng-click="narrowDown.narrowItDown(narrowDown.searchTerm)">Narrow It Down For Me!</button>
-            </div>
-          </td>
-          <td colspan="2"> </td>
-        </tr>
-        </table>
-        <table  class="datatable">
-           <found-items items="narrowDown.found" on-remove="narrowDown.removeItem(index)"></found-items>
-        </table>
-    </div>-->
 
   <!-- Libraries -->
-    <script src="lib/angular.min.js"></script>
-    <script src="lib/angular-ui-router.min.js"></script>
+  <script src="lib/angular.min.js"></script>
+  <script src="lib/angular-ui-router.min.js"></script>
 
 
-    <!-- Modules -->
-    <script src="menudata/data.module.js"></script>
-    <script src="menudata/menuapp.module.js"></script>
-
-  <!-- MenuApp module artifacts -->
-    <script src="menudata/categories.component.js"></script>
-    <script src="menudata/menudata.service.js"></script>
-    <script src="menudata/items.component.js"></script>
+  <!-- Modules -->
+  <script src="menudata/data.module.js"></script>
+  <script src="menudata/menuapp.module.js"></script>
 
   <!-- Routes -->
-    <script src="menudata/routes.js"></script>
+  <script src="menudata/routes.js"></script>
 
-
+  <!-- MenuApp module artifacts -->
+  <script src="menudata/categories.component.js"></script>
+  <script src="menudata/items.component.js"></script>
+  <script src="menudata/categories.controller.js"></script>
+  <script src="menudata/items.controller.js"></script>
+  <script src="menudata/menudata.service.js">
+    </script
+  
   
 
-    
+      
 
 </body>
 </html>

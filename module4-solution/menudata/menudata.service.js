@@ -2,53 +2,46 @@
 //   * `getAllCategories` - this method should return a promise which is a result of using the `$http` service, using the following REST API endpoint: https://davids-restaurant.herokuapp.com/categories.json
 //   * `getItemsForCategory(categoryShortName)` - this method should return a promise which is a result of using the `$http` service, using the following REST API endpoint: https://davids-restaurant.herokuapp.com/menu_items.json?category=, where, before the call to the server, your code should append whatever `categoryShortName` value was passed in as an argument into the `getItemsForCategory` method.
 
-(function () {
+
+
+
+(function (){
 'use strict';
 
-angular.module('MenuApp')
+angular.module('Data')
 .service('MenuDataService', MenuDataService)
 .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com");
 
-MenuDataService.$inject = ['$http', '$timeout']
-function MenuDataService($q, $timeout) {
-  var service = this;
+MenuDataService.$inject = ['$http', 'ApiBasePath'];
+  function MenuDataService($http, ApiBasePath) {
+    var service = this;
+
+    service.getAllCategories = function () {
+        //console.log('got inside getAllCategories');
+      return $http({
+        method: "GET",
+        url: (ApiBasePath + "/categories.json")
+      }).then(function (response) {
+        return response.data;
+      });
+    }
 
 
+    service.getItemsForCategory = function (categoryShortName) {
+        console.log("In getItemsForCategory : " + categoryShortName);
+      return $http({
+        method: "GET",
+        url: (ApiBasePath + "/menu_items.json?category=" + categoryShortName)
+        // params: {
+        //   category: categoryShortName
+        // }
+      }).then(function (response) {
+        console.log("In menu_items : " + response.data.menu_items);
+        return response.data.menu_items;
 
-  service.getAllCategories = function ( ) {
-
-      return $http(
-          {
-            method: "GET",
-            url: (ApiBasePath + "/categories.json")
-          }
-        )
-        .then(
-            function (result) {
-            console.log("get all categories result : "  + result.data);
-              return result.data;
-          }
-      )
-  }; 
-
-  service.getItemsForCategory = function (categoryShortName) {
-
-      return $http(
-          {
-            method: "GET",
-            url: (ApiBasePath + "/menu_items.json"),
-            param: {category : categoryShortName}
-          }
-        )
-        .then(
-            function (result) {
-            console.log("get all categories  by short name result : "  + result.data);
-              return result.data;
-          }
-      )
-  }; 
- 
-};
-  
-
+      });
+    }
+  }
 })();
+
+
